@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/home.jpg" type="image/x-icon" />
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="images/firefox.png" alt="Firefox Logo">
+            <h1>qutebrowser</h1>
+        </div>
+        <div class="search-bar">
+            <img src="images/google.ico" alt="search icon">
+            <input type="text" placeholder="Search with Google or enter address">
+        </div>
+        <div class="grid" id="gridContainer" />
+    </div>
+
+    <script>
+        // Example JSON data (replace with your own JSON endpoint)
+        const jsonData = [
+            {
+                "title": "YouTube",
+                "link": "https://www.youtube.com/",
+                "imageUrl": "images/youtube.png"
+            },
+            {
+                "title": "SDE",
+                "link": "https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/",
+                "imageUrl": "images/sde.png"
+            },
+            {
+                "title": "chatgpt",
+                "link": "https://chatgpt.com/",
+                "imageUrl": "images/chatgpt.png"
+            },
+            {
+                "title": "WhatsApp",
+                "link": "https://web.whatsapp.com/",
+                "imageUrl": "images/whatsapp.png"
+            },
+            {
+                "title": "github",
+                "link": "https://github.com/",
+                "imageUrl": "images/git.png"
+            },
+            {
+                "title": "firebase",
+                "link": "https://console.firebase.google.com/u/1/project/art-automation-5894a/database/art-automation-5894a-default-rtdb/data",
+                "imageUrl": "images/firebase.png"
+            },
+            {
+                "title": "Canvas",
+                "link": "https://canvas.instructure.com/",
+                "imageUrl": "images/canvas.png"
+            },
+            {
+                "title": "Mail",
+                "link": "https://mail.google.com/mail/u/1/#inbox",
+                "imageUrl": "images/mail.png"
+            },
+            {
+                "title": "Overleaf",
+                "link": "",
+                "imageUrl": "images/overleaf.png"
+            },
+            {
+                "title": "Telegram",
+                "link": "https://web.telegram.org/k/",
+                "imageUrl": "images/telegram.png"
+            },
+            {
+                "title": "Linux",
+                "link": "",
+                "imageUrl": "images/chatgpt.png"
+            },
+            {
+                "title": "Add",
+                "link": "#",
+                "imageUrl": "images/edit.png"
+            },
+            {
+                "title": "Add",
+                "link": "#",
+                "imageUrl": "images/edit.png"
+            },
+            {
+                "title": "Add",
+                "link": "#",
+                "imageUrl": "images/edit.png"
+            },
+            {
+                "title": "Add",
+                "link": "#",
+                "imageUrl": "images/edit.png"
+            },
+            {
+                "title": "Add",
+                "link": "#",
+                "imageUrl": "images/edit.png"
+            },
+        ];
+
+        const gridContainer = document.getElementById('gridContainer');
+        jsonData.forEach(item => {
+            const gridItem = document.createElement('div');
+            gridItem.classList.add('grid-item');
+
+            const link = document.createElement('a');
+            link.href = item.link;
+
+            const imgContainer = document.createElement('div');
+            imgContainer.classList.add('img-container');
+
+            const img = document.createElement('img');
+            img.src = item.imageUrl;
+            img.alt = item.title + ' Icon';
+
+            const title = document.createElement('div');
+            title.classList.add('title');
+            title.textContent = item.title;
+
+            imgContainer.appendChild(img);
+            link.appendChild(imgContainer);
+            link.appendChild(title);
+            gridItem.appendChild(link);
+
+            gridContainer.appendChild(gridItem);
+        });
+    </script>
+</body>
+
+</html>
