@@ -5,8 +5,6 @@ config.load_autoconfig(False)
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and
 # AppCache. Note that with QtWebKit, only `all` and `never` are
-# supported as per-domain values. Setting `no-3rdparty` or `no-
-# unknown-3rdparty` per-domain on QtWebKit will have the same effect as
 # `all`. If this setting is used with URL patterns, the pattern gets
 # applied to the origin/first party URL of the page making the request,
 # not the request URL. With QtWebEngine 5.15.0+, paths will be stripped
@@ -274,7 +272,7 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 
 
 # Set the JetBrains Mono Nerd Font for web content
-# c.fonts.web.family.standard = 'JetBrainsMono Nerd Font'
+#c.fonts.web.family.standard = 'JetBrainsMono Nerd Font'
 # c.fonts.web.family.fixed = 'JetBrainsMono Nerd Font'
 # c.fonts.web.family.serif = 'JetBrainsMono Nerd Font'
 # c.fonts.web.family.sans_serif = 'JetBrainsMono Nerd Font'
@@ -293,3 +291,8 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 # c.fonts.debug_console = '12pt JetBrainsMono Nerd Font'
 # c.fonts.completion.entry = '12pt JetBrainsMono Nerd Font'
 # c.fonts.completion.category = 'bold 12pt JetBrainsMono Nerd Font'
+
+
+c.content.blocking.adblock.lists = [
+    "https://www.youtube.com/"
+]

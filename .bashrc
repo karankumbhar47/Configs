@@ -258,3 +258,4 @@ export VISUAL="code"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+export ANDROID_SDK_HOME="$HOME/.config/.android"

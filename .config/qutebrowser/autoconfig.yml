@@ -6,11 +6,31 @@
 
 config_version: 2
 settings:
-  colors.webpage.bg:
-    global: black
-  content.blocking.method:
-    global: both
+  bindings.commands:
+    global:
+      normal:
+        ',M': spawn linkhandler_mpd {url}
+        ',V': spawn --detach mpv --ytdl=no --force-window=yes --script-opts=ytdl_hooks-all_formats="yes"
+          {url}
+        ',e': edit-text
+        ',m': hint links spawn linkhandler_mpd {hint-url}
+        ',r': spawn dmenuread web {url}
+        ',v': hint links spawn --detach mpv --force-window=yes --ytdl=no --script-opts=ytdl_hooks-all_formats="yes"
+          {hint-url}
+        J: tab-prev
+        K: tab-next
+        achat: open -t https://chatgpt.com/
+        afire: open -t https://console.firebase.google.com/u/0/project/art-automation-5894a/database/art-automation-5894a-default-rtdb/data?pli=1
+        agit: open -t https://github.com/
+        aweb: open -t https://web.whatsapp.com/
+        ayt: open -t https://www.youtube.com/
+        xb: config-cycle statusbar.show always never
+        xt: config-cycle tabs.show always never
+        xx: config-cycle statusbar.show always never;; config-cycle tabs.show always
+          never
+  colors.webpage.darkmode.enabled:
+    global: true
   statusbar.show:
-    global: never
+    global: always
   tabs.show:
     global: always

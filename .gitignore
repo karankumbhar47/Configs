@@ -1,3 +1,4 @@
 .config/bash/bash_history
 .vim/plugged/
 .ssh/
+.config/mpv/watch_later/*
