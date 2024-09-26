@@ -1,4 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
+
 "                                                                          "
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗                    "
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝                    "
@@ -32,7 +33,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
                             " there are certain files that we would never want to edit with vim.
                             " wildmenu will ignore files with these extensions.
 set wildmode=list:longest   " make wildmenu behave like similar to bash completion.
-
+set viminfo+=n~/.config/history/.viminfo
 
 
 
@@ -44,16 +45,33 @@ filetype indent on          " load an indent file for the detected file type.
 
 
 
-
 " plugins ---------------------------------------------------------------- {{{
 
 " plugin code goes here.
 call plug#begin()
-  
+
+" primeagen game
+Plug 'ThePrimeagen/vim-be-good'
+
+" comments shortcut
 Plug 'tpope/vim-commentary'
-Plug 'preservim/nerdtree'
-Plug 'vim-scripts/replacewithregister'
+
+" fuzzy finder or naviagation
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+
+" require for telescope
+Plug 'nvim-lua/plenary.nvim' 
+
+" faster navigation
+Plug 'ThePrimeagen/harpoon'
+
+" remove higlighting after search 
 Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-easy-align'
+ 
+
+"Plug 'vim-scripts/replacewithregister'
+"Plug 'preservim/nerdtree'
 "plug 'preservim/nerdcommenter'
 "plug 'shougo/context_filetype.vim'
 "plug 'pangloss/vim-javascript'
@@ -67,7 +85,7 @@ Plug 'junegunn/vim-slash'
 "plug 'tpope/vim-fugitive'
 "plug 'tpope/vim-obsession'
 "plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-surround'
 "plug 'sudar/vim-arduino-syntax'
 "plug 'edkolev/tmuxline.vim'
 "plug 'mattn/emmet-vim'
@@ -78,11 +96,10 @@ Plug 'tpope/vim-surround'
 "plug 'dart-lang/dart-vim-plugin'
 "plug 'natebosch/vim-lsc'
 "plug 'natebosch/vim-lsc-dart'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 "plug 'lilydjwg/colorizer'
 "plug 'lervag/vimtex'
 "plug 'nvim-lua/plenary.nvim'
-"plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 "plug 'airblade/vim-gitgutter'
 "plug 'sjl/gundo.vim'
 "plug 'junegunn/fzf.vim', { 'do' : { -> fzf#install() } }
@@ -96,13 +113,35 @@ call plug#end()
 
 " mappings code goes here.
 
+" specify leader key
+let mapleader = " "
+
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+
+" horpoon (quick navigation) 
+nnoremap <leader>a <cmd>:lua require("harpoon.mark").add_file()<cr>
+nnoremap <C-h> <cmd>:lua require("harpoon.ui").toggle_quick_menu()<cr>
+nnoremap <a-1> <cmd>:lua require("harpoon.ui").nav_file(1)<cr>
+nnoremap <a-2> <cmd>:lua require("harpoon.ui").nav_file(2)<cr>
+nnoremap <a-3> <cmd>:lua require("harpoon.ui").nav_file(3)<cr>
+nnoremap <a-4> <cmd>:lua require("harpoon.ui").nav_file(4)<cr>
+nnoremap <a-5> <cmd>:lua require("harpoon.ui").nav_file(5)<cr>
+nnoremap <a-6> <cmd>:lua require("harpoon.ui").nav_file(6)<cr>
+nnoremap <a-7> <cmd>:lua require("harpoon.ui").nav_file(7)<cr>
+
+
 " nerdtree
 nnoremap <leader>n :nerdtreefocus<cr>
 nnoremap <c-n> :nerdtreetoggle<cr>
 nnoremap <c-f> :nerdtreefind<cr>
 " mirror the nerdtree before showing it. this makes it the same on all tabs.
-"
-"
+
+
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -110,10 +149,15 @@ nnoremap  <leader>y  "+y
 nnoremap  <leader>yy  "+yy
 
 " Paste from clipboard
-nnoremap <leader>p "+p
+" nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-vnoremap <leader>p "+p
+"vnoremap <leader>p "+p
 vnoremap <leader>P "+P
+
+" general mapping
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+xnoremap <leader>p "_dP
 
 " }}}
 

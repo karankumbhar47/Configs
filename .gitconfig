@@ -1,5 +1,10 @@
 [user]
-	name = Karan_Kumbhar
-	email = karansunilk@iitbhilai.ac.in
+	name = Karan Kumbhar
+	email = 111757554+karankumbhar47@users.noreply.github.com
 [core]
 	editor = nvim
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
