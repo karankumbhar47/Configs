@@ -131,15 +131,6 @@ bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 
 ### SETTING OTHER ENVIRONMENT VARIABLES
-if [ -z "$XDG_CONFIG_HOME" ]; then
-    export XDG_CONFIG_HOME="$HOME/.config"
-fi
-if [ -z "$XDG_DATA_HOME" ]; then
-    export XDG_DATA_HOME="$HOME/.local/share"
-fi
-if [ -z "$XDG_CACHE_HOME" ]; then
-    export XDG_CACHE_HOME="$HOME/.cache"
-fi
 
 ### SHOPT
 shopt -s autocd  # change to named directory
@@ -216,42 +207,49 @@ if [ -f /etc/bash.command-not-found ]; then
 fi
 
 ### PATH
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 export PATH="$HOME/.local/bin:$PATH"
 export LD_LIBRARY_PATH=/home/karan/.mujoco/mujoco210/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/nvidia
 export PATH="$LD_LIBRARY_PATH:$PATH"
-#export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
 export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/Documents/Notes/Sem_VII/N2T/lab_files/lab2/tools/:$PATH"
-export TERM="xterm-256color" # getting proper colors
-#export PYTHONPATH="/home/karan/Templates/ravens"
+export TERM="xterm-256color"                                        # getting proper colors
 export XMONAD_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad" # xmonad.hs is expected to stay here
 export EDITOR="nvim"
 export VISUAL="code"
-# export HISTFILE="home/karan/.config/bash/bash_history"
 export XDG_CACHE_HOME="$HOME/.cache"
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
 export GRADLE_USER_HOME="$HOME/.config/Android/gradle"
-# export ANDROID_USER_HOME="$HOME/.config/Android/android"
 export ANDROID_SDK_HOME="$HOME/.config/Android"
 
-export GUROBI_HOME="/home/karan/Documents/Notes/Sem_VII/Crypto/codes/gurobi/tools/linux64"
-# export GUROBI_HOME="$HOME/Documents/Notes/Sem_VII/crypto/codes/gurobi/tools/linux64"
+export GUROBI_HOME="$HOME/Documents/Notes/Sem_VII/Crypto/codes/gurobi/tools/linux64"
 export PATH="$GUROBI_HOME/bin:$PATH"
 export PATH="$HOME/ns-allinone-3.42/ns-3.42:$PATH"
 
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 export LESSHISTFILE="$HOME/.config/history/lesshst"
-export PYTHON_HISTORY="~/.config/history/python_history"
+export PYTHON_HISTORY="$HOME/.config/history/python_history"
 export PYTHONSTARTUP="/etc/python3/pythonrc"
 export CARGO_HOME="$HOME/.config/.cargo"
 export DOTNET_CLI_HOME="$XDG_CACHE_HOME/dotnet"
-export RUSTUP_HOME=".config/rustup"
+export RUSTUP_HOME="$HOME/.config/rustup"
 export GNUPGHOME="$HOME/.config/gnupg"
-export NPM_CONFIG_USERCONFIG="$HOME/.config/npm"
 export GHCUP_HOME="$HOME/.config/ghcup"
-#export GRB_LICENSE_FILE="/home/karan/Documents/Lecture_Notes/Sem_VII/crypto/codes/gurobi/tools/gurobi.lic"
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
+export W3M_DIR="$XDG_STATE_HOME/w3m"
+export STACK_ROOT="$XDG_DATA_HOME/stack"
 . "$CARGO_HOME/env"
+
+# export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+# export PYTHONPATH="/home/karan/Templates/ravens"
+# export HISTFILE="home/karan/.config/bash/bash_history"
+# export ANDROID_USER_HOME="$HOME/.config/Android/android"
+# export GUROBI_HOME="$HOME/Documents/Notes/Sem_VII/crypto/codes/gurobi/tools/linux64"
+# export GRB_LICENSE_FILE="/home/karan/Documents/Lecture_Notes/Sem_VII/crypto/codes/gurobi/tools/gurobi.lic"

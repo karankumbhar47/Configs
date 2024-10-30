@@ -112,7 +112,7 @@ alias py='python3 '
 
 alias getdb='scp -i ~/.ssh/LightsailDefaultKey-ap-south-1.pem admin@13.233.99.87:/tmp/fds.db /tmp/fds.db && sqlitebrowser /tmp/fds.db'
 alias connserv='ssh -i ~/.ssh/LightsailDefaultKey-ap-south-1.pem admin@13.233.99.87'
-alias pyenv='source /home/karan/Templates/Food-Delivery-System/Flask-Server/venv/bin/activate'
+alias pyenv='source ~/Documents/Notes/Sem_VII/env/bin/activate'
 alias startserv='pyenv && cd /home/karan/Templates/Food-Delivery-System/Flask-Server && python3 -m openapi_server'
 alias adddata='pyenv && cd /home/karan/Templates/Food-Delivery-System && python3 /home/karan/Templates/Food-Delivery-System/API-Tests/main.py -a localhost'
 #alias startserve='pyenv && cd /home/karan/Templates/Food-Delivery-System/Flask-Server && python3 -m openapi_server & wait && clear'
