@@ -60,3 +60,114 @@ class my_edit(Command):
         # This is a generic tab-completion function that iterates through the
         # content of the current directory.
         return self._tab_directory_content()
+
+
+# class trash_put_confirm(Command):
+#     """
+#     :trash_put_confirm
+#     Prompts for confirmation to move selected files to trash.
+#     """
+#
+#     def execute(self):
+#         files = self.fm.thistab.get_selection()
+#         file_names = ", ".join([f.relative_path for f in files])
+#         self.fm.notify(
+#             f"Are you sure you want to trash: {file_names}? [y/N]", bad=True)
+#         self.fm.open_console("trash_put_confirm_confirm ")
+#
+
+# class trash_put_confirm(Command):
+#     """
+#     :trash_put_confirm
+#     Prompts for confirmation to move selected files to trash.
+#     """
+#
+#     def execute(self):
+#         files = self.fm.thistab.get_selection()
+#         file_names = ", ".join([f.relative_path for f in files])
+#         self.fm.notify(
+#             f"Are you sure you want to trash: {file_names}? Type 'y' for Yes or 'n' for No.", bad=True)
+#         self.fm.open_console("trash_put_confirm_confirm")
+#
+#
+# class trash_put_confirm_confirm(Command):
+#     def execute(self):
+#         if self.arg(1) == "y":
+#             files = self.fm.thistab.get_selection()
+#             for f in files:
+#                 self.fm.execute_console(f"shell trash-put '{f.path}'")
+#             self.fm.notify("Files moved to trash.")
+#         else:
+#             self.fm.notify("Cancelled.")
+#
+#
+# class trash_put_confirm(Command):
+#     """
+#     :trash_put_confirm
+#     Prompts for confirmation to move selected files to trash.
+#     """
+#
+#     def execute(self):
+#         # Get selected files and prepare the prompt message
+#         files = self.fm.thistab.get_selection()
+#         file_names = ", ".join([f.relative_path for f in files])
+#
+#         # Open the console with a prompt, but no command name
+#         self.fm.open_console(
+#             f"Are you sure you want to trash: {file_names}? Type 'y' for Yes or 'n' for No: ",
+#             position=0,
+#             prompt=""
+#         )
+#
+#     def tab(self, tabnum):
+#         # Capture the user's response
+#         answer = self.arg(1).strip().lower()
+#
+#         # Check the response and proceed accordingly
+#         if answer == "y":
+#             # Move selected files to trash
+#             files = self.fm.thistab.get_selection()
+#             for f in files:
+#                 self.fm.execute_console(f"shell trash-put '{f.path}'")
+#             self.fm.notify("Files moved to trash.")
+#         elif answer == "n":
+#             # Operation canceled
+#             self.fm.notify("Cancelled.")
+#         else:
+#             # Invalid input; re-prompt or handle accordingly
+#             self.fm.notify(
+#                 "Invalid input. Please press 'y' to confirm or 'n' to cancel.", bad=True)
+#
+#
+
+class trash_put_confirm(Command):
+    """
+    :trash_put_confirm
+    Prompts for confirmation to move selected files to trash.
+    """
+
+    def execute(self):
+        # Get selected files and create a display message
+        files = self.fm.thistab.get_selection()
+        file_names = ", ".join([f.relative_path for f in files])
+
+        # Display confirmation prompt and await user input (y/n)
+        self.fm.notify(
+            f"Are you sure you want to trash: {file_names}? Type 'y' to confirm or 'n' to cancel.", bad=True)
+        self.fm.open_console("trash_put_confirm_response ")
+
+
+class trash_put_confirm_response(Command):
+    def execute(self):
+        # Process response based on user input
+        answer = self.arg(1).strip().lower()
+
+        if answer == "y":
+            # Move files to trash
+            files = self.fm.thistab.get_selection()
+            for f in files:
+                self.fm.execute_console(f"shell trash-put '{f.path}'")
+            self.fm.notify("Files moved to trash.")
+        else:
+            # Cancel operation
+            self.fm.notify("Cancelled.")
